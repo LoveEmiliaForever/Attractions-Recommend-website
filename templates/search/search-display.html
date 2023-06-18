@@ -1,0 +1,23 @@
+{% extends 'basic.html' %}
+
+{% block main %}
+    <section id="search-display">
+        {% if spots != None %}
+            {% for line in spots %}
+                <div>
+                    {% for spot in line %}
+                        <a href="{{url_for('detail.spot_detail', spot_id=spot['spot-id'])}}">
+                            <img src="{{url_for('static', filename='images/spot-profile-photo.png')}}" alt="景区图片">
+                            <p>{{spot['spot-name']}}</p>
+                            <p>{{spot['spot-profile']}}</p>
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        {% endif %}
+    </section>
+{% endblock %}
+
+{% block js_path %}
+    <script src="{{url_for('static', filename='scripts/search-display-animation.js')}}"></script>
+{% endblock %}

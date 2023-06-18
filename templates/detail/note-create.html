@@ -1,0 +1,24 @@
+{% extends 'account/user-space.html' %}
+
+{% block return_link %}
+    <a href="{{url_for('detail.spot_detail', spot_id=spot_id)}}">&lt&lt返回景点页</a>
+{% endblock %}
+
+{% block main %}
+    <div id="error-message">
+        {% for error_message in get_flashed_messages() %}
+            <p>{{error_message}}</p>
+        {% endfor %}
+    </div>
+    <form action="{{url_for('detail.note_create', spot_id=spot_id)}}" method="post" id="note-create-edit">
+        <p>游记标题:</p>
+        <input type="text" name="note-title" placeholder="输入标题">
+        <p>游记内容:</p>
+        <textarea name="note-body" placeholder="输入内容"></textarea>
+        <input type="image" src="{{url_for('static', filename='images/send-icon.png')}}" title="发布你的游记">
+    </form>
+{% endblock %}
+
+{% block js_path %}
+    <script src="{{url_for('static', filename='scripts/note-create-animation.js')}}"></script>
+{% endblock %}

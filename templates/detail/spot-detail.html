@@ -1,0 +1,76 @@
+{% extends 'basic.html' %}
+
+{% block main %}
+    <section id="detail-information">
+        <div>
+            <img src="{{url_for('static', filename='images/spot-profile-photo.png')}}" alt="景区图片">
+            <div>
+                <p><span>名字: </span>{{spot['spot-name']}}</p>
+                <div>
+                    <p><span>地址: </span>{{spot['spot-address']}}</p>
+                </div>
+                <p><span>开放时间: </span>{{spot['open-time']}}</p>
+                <p><span>景区等级: </span>{{spot['spot-level']}}</p>
+                <p><span>景区类型: </span>{{spot['spot-classify']}}</p>
+            </div>
+        </div>
+        <div>
+            <p><span>服务电话: </span>{{spot['serve-phone-num']}}</p>
+            <p><span>投诉电话: </span>{{spot['complaint-phone-num']}}</p>
+        </div>
+        <div>
+            <p>景区简介: </p>
+            <p>{{spot['spot-profile']}}</p>
+        </div>
+    </section>
+    <section id="detail-comment"  style=" display: none;">
+        <div>
+            <p>景区评论</p>
+            <div>
+                <div>
+                    {% for comment in comments %}
+                        <div style="left:-{{comment['right']}};top:{{comment['top']}};animation:text-move-animate 5s both linear {{comment['delay-time']}}s infinite;">
+                            {{comment['comment-body']}}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <div>
+            {% for comment in comments %}
+                <div>
+                    <img src="{{url_for('static', filename='images/user-profile-photo.png')}}">
+                    <p>{{comment['comment-body']}}</p>
+                </div>
+            {% endfor %}
+            </div>
+            <div>
+                <form action="{{url_for('detail.post_comment')}}" method="post">
+                    <input type="text" name="comment-body" required="输入弹幕">
+                    <input type="number" name="affiliation-id" readonly value={{spot_id}} style="display:none">
+                    <input type="number" name="author-id" readonly value={{session.get('user-id')}} style="display:none">
+                    <input type="image" src="{{url_for('static', filename='images/send-icon.png')}}">
+                </form>
+            </div>
+        </div>
+    </section>
+    <section id="detail-note" style=" display: none;">
+        <a href="{{url_for('detail.note_create', spot_id=spot_id)}}">我也要发布游记</a>
+        {% for note in notes %}
+            <div>
+                <div>
+                    <img src="{{url_for('static', filename='images/user-profile-photo.png')}}">
+                    <p>{{note['note-title']}}</p>
+                </div>
+                <hr>
+                <p>{{note['note-body']}}</p>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}
+
+{% block js_path %}
+    <script src="{{url_for('static', filename='scripts/spot-detail-animation.js')}}"></script>
+{% endblock %}

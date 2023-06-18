@@ -1,0 +1,225 @@
+@font-face {
+    font-family: steel-word;
+    src: url(../fonts/汉仪铸字美心体简.ttf)format("truetype");
+}
+@font-face {
+    font-family: narrow-word;
+    src: url(../fonts/后现代窄体3.ttf)format("truetype");
+}
+@font-face {
+    font-family: round-word;
+    src: url(../fonts/文道和圆体.ttf)format("truetype");
+}
+@font-face {
+    font-family: magic-word;
+    src: url(../fonts/汉仪铸字黑魔法.ttf)format("truetype");
+}
+a{
+    text-decoration: none;
+}
+body > header > div:nth-of-type(1) > div > a p{
+    font-size:54px;
+    font-family: steel-word;
+}
+body > header > div:nth-of-type(1) > div p{
+    font-size: 100%;
+    font-family: magic-word;
+}
+body > header > div:nth-of-type(2) fieldset legend{
+    font-family: round-word;
+    font-size:130%;
+}
+body > header > div:nth-of-type(2) form > input:nth-of-type(1){
+    color: #072849;
+    font-family: round-word;
+    font-size: 160%;
+    text-align: center;
+}
+body > header > div:nth-of-type(3) div:nth-of-type(2) a{
+    font-size: 110%;
+}
+#spot-recommend > p{
+    font-family: steel-word;
+    font-size:200%;
+}
+#spot-recommend a > p:nth-of-type(1){
+    font-family: magic-word;
+    font-size: 130%;
+}
+#spot-recommend a > p:nth-of-type(2){
+    font-family: round-word;
+    font-size: 110%;
+}
+#spot-near-by > p{
+    font-family: steel-word;
+    font-size:200%;
+}
+#spot-near-by a > div > p:nth-of-type(1){
+    font-family: magic-word;
+    font-size: 130%;
+}
+#spot-near-by a > div > p:nth-of-type(2){
+    font-family: round-word;
+    font-size: 110%;
+}
+#home-comment-bar{
+    font-family: round-word;
+}
+#home-comment-bar > div:nth-of-type(1) p{
+    font-family: steel-word;
+    font-size: 200%;
+}
+#home-comment-bar > div:nth-of-type(1) > div{
+    font-size: 150%;
+}
+#home-note-bar > div > div > p:nth-of-type(1){
+    font-family: magic-word;
+    font-size: 130%;
+}
+#home-note-bar > div > div > p:nth-of-type(2){
+    font-family: round-word;
+    font-size: 110%;
+    text-indent: 2em;
+}
+#detail-information{
+    font-family: round-word;
+    font-size: 130%;
+}
+#detail-information span{
+    font-size: 120%;
+}
+#detail-information > div:nth-of-type(3) > p:nth-of-type(1){
+    font-size: 140%;
+}
+#detail-information > div:nth-of-type(3) > p:nth-of-type(2){
+    text-indent: 2em;
+    line-height: 1.5em;
+}
+#detail-comment{
+    font-family: round-word;
+}
+#detail-comment > div:nth-of-type(1) p{
+    font-family: steel-word;
+    font-size: 200%;
+}
+#detail-note > a{
+    font-family: round-word;
+    font-size: 110%;
+}
+#detail-note > div > div > p{
+    font-family: round-word;
+    font-size: 140%;
+}
+#detail-note > div > p{
+    font-family: round-word;
+    font-size: 120%;
+}
+#return-link a{
+    font-family: round-word;
+    font-size: 120%;
+}
+#user-information{
+    font-family: round-word;
+}
+#user-information > div:nth-of-type(1){
+    font-size: 130%;
+}
+#user-information > div:nth-of-type(2) span{
+    font-size: 130%;
+}
+#user-information > div:nth-of-type(2) p{
+    font-size: 120%;
+}
+#user-information > div:nth-of-type(2) > div:nth-of-type(1) p{
+    font-size: 180%;
+}
+#user-information > div:nth-of-type(2) > div:nth-of-type(1) a{
+    font-size: 150%;
+}
+#user-information > div:nth-of-type(3) > p:nth-of-type(1){
+    font-size: 110%;
+}
+#user-information > div:nth-of-type(3) > p{
+    font-size: 100%;
+}
+#user-information > div:nth-of-type(3) span{
+    font-size: 100%;
+}
+#user-note > p{
+    font-family: round-word;
+    font-size: 250%;
+}
+#user-note{
+    font-family: round-word;
+    font-size: 120%;
+}
+#error-message{
+    font-family: steel-word;
+    font-size: 180%;
+    text-align: center;
+}
+#note-create-edit > p{
+    font-family: round-word;
+    font-size: 120%;
+}
+#note-create-edit > input:nth-of-type(1){
+    font-family: round-word;
+    font-size: 120%;
+}
+#note-create-edit > textarea{
+    font-family: round-word;
+    font-size: 120%;
+}
+#user-edit{
+    font-family: round-word;
+    font-size: 130%;
+}
+#user-edit > form select{
+    font-family: round-word;
+    font-size: 105%;
+}
+#user-edit > form input{
+    font-family: round-word;
+    font-size: 105%;
+}
+#authentic-main > p{
+    font-family: steel-word;
+    font-size: 300%;
+}
+#authentic-main > div{
+    font-family: steel-word;
+}
+#authentic-main > div > div > form{
+    font-family: round-word;
+}
+#authentic-main > div > div > form > div > input{
+    font-family: round-word;
+    font-size: 110%;
+}
+#authentic-main > div > div > form > div:nth-of-type(3) > input{
+    font-size: 130%;
+    line-height: 1em;
+}
+#authentic-main > div > div > form > div > div > p{
+    font-size: 20%;
+}
+#authentic-main > div > div > form > div button{
+    font-family: round-word;
+    font-size: 30%;
+}
+
+
+body > footer{
+    font-family: round-word;
+}
+body > footer > div:nth-of-type(1) > div:nth-of-type(1){
+    font-family: steel-word;
+}
+body > footer > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1){
+    font-family: steel-word;
+    font-size: 120%;
+}
+body > footer > div:nth-of-type(1) > div:nth-of-type(3){
+    font-family: steel-word;
+    font-size: 120%;
+}

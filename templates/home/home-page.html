@@ -1,0 +1,92 @@
+{% extends 'basic.html' %}
+
+{% block main %}
+    <section id="spot-recommend">
+        <p><span>推荐景点</span></p>
+        <hr>
+        <hr>
+        <div>
+            {% for spot in recommend_spot %}
+            <div>
+                <a href="{{url_for('detail.spot_detail', spot_id=spot['spot-id'])}}">
+                    <img src="{{url_for('static', filename='images/spot-profile-photo.png')}}" alt="景区图片">
+                    <p>{{spot['spot-name']}}</p>
+                    <p>{{spot['spot-classify']}}</p>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section id="spot-near-by">
+        <p>附近景点</p>
+        <hr>
+        <hr>
+        <div>
+            {% for spot in near_by_spot %}
+                <a href="{{url_for('detail.spot_detail', spot_id=spot['spot-id'])}}">
+                    <img src="{{url_for('static', filename='images/spot-profile-photo.png')}}" alt="景区图片">
+                    <hr>
+                    <div>
+                        <p>{{spot['spot-name']}}</p>
+                        <p>{{spot['spot-profile']}}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+    <section id="home-comment-bar" style="visibility: hidden; display: none;">
+        <div>
+            <p>留下你的足迹</p>
+            <div>
+                <div>
+                    {% for comment in comments %}
+                        <div style="left:-{{comment['right']}};top:{{comment['top']}};animation:text-move-animate 5s both linear {{comment['delay-time']}}s infinite;">
+                            {{comment['comment-body']}}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                {% for comment in comments %}
+                    <div>
+                        <img src="{{url_for('static', filename='images/user-profile-photo.png')}}">
+                        <p>{{comment['comment-body']}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div>
+                <form action="{{url_for('home.post_comment')}}" method="post">
+                    <input type="text" name="comment-body" placeholder="输入弹幕" required>
+                    <input type="image" src="{{url_for('static', filename='images/send-icon.png')}}">
+                </form>
+            </div>
+        </div>
+    </section>
+    <section id="home-note-bar" style="visibility: hidden; display: none;">
+        {% for note in notes %}
+            {% if note['flag']==True%}
+                <div>
+                    <div>
+                        <p>{{note['note-title']}}</p>
+                        <p>{{note['note-body']}}</p>
+                    </div>
+                    <img src="{{url_for('static', filename='images/user-profile-photo.png')}}">
+                </div>
+            {% else %}
+                <div>
+                    <img src="{{url_for('static', filename='images/user-profile-photo.png')}}">
+                    <div>
+                        <p>{{note['note-title']}}</p>
+                        <p>{{note['note-body']}}</p>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </section>
+{% endblock %}
+
+{% block js_path %}
+    <script src="{{url_for('static', filename='scripts/home-page-animation.js')}}"></script>
+{% endblock %}

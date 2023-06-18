@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}浙里游-浙江旅游景点推荐网{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="keywords" content="浙江,旅游,浙江旅游,景点,景点推荐">
+        <meta name="Description" content="本网站为用户推荐浙江省的旅游地点，介绍浙江省旅游资源。">
+        <link rel="stylesheet" href="{{url_for('static', filename='styles/basic.css')}}">
+    </head>
+    <body>
+        <header>
+            <div>
+                <div>
+                    <a href="{{url_for('home')}}">
+                        <img src="{{url_for('static', filename='images/web-logo.png')}}" alt="网站LOGO">
+                        <p>浙里游</p>
+                    </a>
+                    <p>浙江旅游景点推荐网站</p>
+                </div>
+            </div>
+            <div>
+                <fieldset>
+                    <legend>想去哪里搜一搜</legend>
+                    <form action="{{url_for('search.search_display')}}" method="post">
+                        <input type="search" name="keyword" placeholder="搜索一下">
+                        <input type="image" src="{{url_for('static', filename='images/search-icon.png')}}" alt="搜索" title="搜索">
+                        <div>
+                            <div>
+                                <label for="search-spot-address">地区:</label>
+                                <select name="spot-address" id="search-spot-address">
+                                    <option value="all">全部</option>
+                                    <option value="杭州">杭州</option>
+                                    <option value="湖州">湖州</option>
+                                    <option value="嘉兴">嘉兴</option>
+                                    <option value="宁波">宁波</option>
+                                    <option value="绍兴">绍兴</option>
+                                    <option value="衢州">衢州</option>
+                                    <option value="金华">金华</option>
+                                    <option value="台州">台州</option>
+                                    <option value="丽水">丽水</option>
+                                    <option value="温州">温州</option>
+                                    <option value="舟山">舟山</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="search-max-travellers">最大承载量:</label>
+                                <select name="max-travellers" id="search-max-travellers">
+                                    <option value="all">全部</option>
+                                    <option value=">0~5000">零到五千</option>
+                                    <option value="5001~10000">五千到一万</option>
+                                    <option value="10001~20000">一万到两万</option>
+                                    <option value="20001~50000">两万到五万</option>
+                                    <option value="50000~999999">五万及以上</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="search-ticket">门票:</label>
+                                <select name="ticket" id="search-ticket">
+                                    <option value="all">全部</option>
+                                    <option value="免费">免费</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="search-discount-have">优惠政策:</label>
+                                <select name="discount-have" id="search-discount-have">
+                                    <option value="all">全部</option>
+                                    <option value="have">拥有</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="search-spot-level">景点等级:</label>
+                                <select name="spot-level" id="search-spot-level">
+                                    <option value="all">全部</option>
+                                    <option value="AAAAA">5A级</option>
+                                    <option value="AAAA">4A级</option>
+                                    <option value="AAA">3A级</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+            <div style="visibility: hidden;">
+                {% if g.user %}
+                    <div>
+                        <a href="{{url_for('account.user_space')}}">
+                            <img src="{{url_for('static', filename='images/user-profile-photo.png')}}" alt="用户头像">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{{url_for('account.user_space')}}">{{g.user['user-name']}}</a>
+                        <a href="{{url_for('authentic.log_out')}}">退出登录</a>
+                    </div>
+                {% else %}
+                    <div>
+                        <a href="{{url_for('authentic.log_in')}}">
+                            <img src="{{url_for('static', filename='images/default-profile-photo.png')}}" alt="未登录头像">
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{{url_for('authentic.log_in')}}">用户未登录</a>
+                        <a href="{{url_for('authentic.log_in')}}">登录/注册</a>
+                    </div>
+                {% endif %}
+            </div> 
+        </header>
+        <hr>
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+        <footer>
+            <div>
+                <div>
+                    <img src="{{url_for('static', filename='images/web-logo-white.png')}}" alt="网站LOGO">
+                    <a href="" title="发送邮件">联系我们</a>
+                </div>
+                <div>
+                    <div>
+                        <p>友情链接:</p>
+                    </div>
+                    <div>
+                        <div>
+                            <a href="https://www.tzc.edu.cn/">
+                                <img src="{{url_for('static', filename='images/TZ-University.png')}}" alt="台州学院图片">
+                                <p>台州学院官网</p>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="https://dxxy.tzc.edu.cn/">
+                                <img src="{{url_for('static', filename='images/TZ-Faculty.png')}}" alt="台州学院-电子与信息工程学院图片">
+                                <p>台州学院-电子与信息工程学院</p>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="https://www.hdu.edu.cn">
+                                <img src="{{url_for('static', filename='images/HD-University.png')}}" alt="杭州电子科技大学图片">
+                                <p>杭州电子科技大学</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <p>关注我们的账号:</p>
+                    </div>
+                    <div>
+                        <img src="{{url_for('static', filename='images/Alipay.svg')}}" alt="支付宝图标">
+                        <img src="{{url_for('static', filename='images/WeChat.svg')}}" alt="微信图标">
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="{{url_for('static', filename='scripts/animation.js')}}"></script>
+        {% block js_path %}
+            <script src="{{url_for('static', filename='')}}"></script>
+        {% endblock %}
+    </body>
+</html>

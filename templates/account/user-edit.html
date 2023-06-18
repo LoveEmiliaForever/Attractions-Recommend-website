@@ -1,0 +1,102 @@
+{% extends 'account/user-space.html' %}
+
+{% block return_link %}
+    <a href="{{url_for('account.user_space')}}">&lt&lt返回个人空间</a>
+{% endblock %}
+
+{% block main %}
+    <div id="user-edit">
+        <div id="error-message">
+            {% for error_message in get_flashed_messages() %}
+                <p>{{error_message}}</p>
+            {% endfor %}
+        </div>
+        <form action="{{url_for('account.user_edit')}}" method="post">
+            <div>
+                <div>
+                    <label for="user-name" style=" display: none;">名字: </label>
+                    <input type="text" name="user-name" id="user-name" placeholder="输入名字">
+                </div>
+                <div>
+                    <label for="user-sign">个性签名: </label>
+                    <input type="text" name="user-sign" id="user-sign" placeholder="输入个性签名">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <label for="user-birth">生日: </label>
+                    <input type="date" name="user-birth" id="user-birth" required>
+                </div>
+                <div>
+                    <label for="user-address">地区: </label>
+                    <select name="user-address" id="user-address">
+                        <option value="secret" selected>保密</option>
+                        <option value="杭州">杭州</option>
+                        <option value="湖州">湖州</option>
+                        <option value="嘉兴">嘉兴</option>
+                        <option value="宁波">宁波</option>
+                        <option value="绍兴">绍兴</option>
+                        <option value="衢州">衢州</option>
+                        <option value="金华">金华</option>
+                        <option value="台州">台州</option>
+                        <option value="丽水">丽水</option>
+                        <option value="温州">温州</option>
+                        <option value="舟山">舟山</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="user-gender">性别: </label>
+                    <select name="user-gender" id="user-gender">
+                        <option value="secret" selected>保密</option>
+                        <option value="male">男</option>
+                        <option value="female">女</option>
+                        <option value="other">其它</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <p>偏好旅游景点类型: </p>
+                <div><input type="checkbox" name="user-prefer" value="1">古镇</div>
+                <div><input type="checkbox" name="user-prefer" value="2">森林</div>
+                <div><input type="checkbox" name="user-prefer" value="3">博物馆</div>
+                <div><input type="checkbox" name="user-prefer" value="4">江河溪流</div>
+                <div><input type="checkbox" name="user-prefer" value="5">农家乐园</div>
+            </div>
+            <div>
+                <div><input type="checkbox" name="user-prefer" value="6">纪念馆</div>
+                <div><input type="checkbox" name="user-prefer" value="7">山脉</div>
+                <div><input type="checkbox" name="user-prefer" value="8">漂流</div>
+                <div><input type="checkbox" name="user-prefer" value="9" checked>其它</div>
+                <div><input type="checkbox" name="user-prefer" value="10">影视</div>
+                <div><input type="checkbox" name="user-prefer" value="11">宗教</div>
+                <div><input type="checkbox" name="user-prefer" value="12">温泉</div>
+                <div><input type="checkbox" name="user-prefer" value="13">主题公园</div>
+            </div>
+            <div>
+                <div><input type="checkbox" name="user-prefer" value="14">古迹</div>
+                <div><input type="checkbox" name="user-prefer" value="15">购物</div>
+                <div><input type="checkbox" name="user-prefer" value="16">海滩</div>
+                <div><input type="checkbox" name="user-prefer" value="17">海洋馆</div>
+                <div><input type="checkbox" name="user-prefer" value="18">游船</div>
+                <div><input type="checkbox" name="user-prefer" value="19">故居</div>
+                <div><input type="checkbox" name="user-prefer" value="20">田园</div>
+            </div>
+            <div>
+                <div><input type="checkbox" name="user-prefer" value="21">民俗</div>
+                <div><input type="checkbox" name="user-prefer" value="22">红色旅游</div>
+                <div><input type="checkbox" name="user-prefer" value="23">洞窟</div>
+                <div><input type="checkbox" name="user-prefer" value="24">摄影</div>
+                <div><input type="checkbox" name="user-prefer" value="25">动植物园</div>
+                <div><input type="checkbox" name="user-prefer" value="26">采摘</div>
+            </div>
+            <div>
+                <p>提交修改:</p>
+                <input type="image" src="{{url_for('static', filename='images/send-icon.png')}}">
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block js_path %}
+    <script src="{{url_for('static', filename='scripts/note-create-animation.js')}}"></script>
+{% endblock %}

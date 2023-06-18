@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}浙里游-浙江旅游景点推荐网{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="keywords" content="浙江,旅游,浙江旅游,景点,景点推荐">
+        <meta name="Description" content="本网站为用户推荐浙江省的旅游地点，介绍浙江省旅游资源。">
+        <link rel="stylesheet" href="{{url_for('static', filename='styles/basic.css')}}">
+    </head>
+    <body>
+        <div id="return-link">
+            {% block return_link %}
+                <a href="{{url_for('home')}}">&lt&lt返回首页</a>
+            {% endblock %}
+        </div>
+        <main>
+            {% block main %}
+            <section id="user-information">
+                <div>
+                    <img src="{{url_for('static', filename='images/user-profile-photo.png')}}">
+                    <p>{{user['user-sign']}}</p>
+                </div>
+                <div>
+                    <div>
+                        <p>{{user['user-name']}}</p>
+                        <a href="{{url_for('account.user_edit')}}">编辑信息</a>
+                    </div>
+                    <div>
+                        <p><span>生日: </span>{{user['user-birth']}}</p>
+                        <p><span>性别: </span>{{user['user-gender']}}</p>
+                    </div>
+                    <div>
+                        <p><span>地址: </span>{{user['user-address']}}</p>
+                        <p><span>偏好: </span>{{user['user-prefer']}}</p>
+                    </div>
+                </div>
+                <div>
+                    <p>账户概况</p>
+                    <p><span>现有游记: </span>{{total_notes}}篇</p>
+                    <p><span>游记页数: </span>{{total_page}}页</p>
+                </div>
+            </section>
+            <section id="user-note">
+                <p>我的游记</p>
+                <div>
+                    {% for note in notes %}
+                        <div>
+                            <div>
+                                <p>{{note['note-title']}}</p>
+                                <p>{{note['note-body']}}</p>
+                            </div>
+                            <div>
+                                <a href="{{url_for('account.note_edit', note_id=note['note-id'], local_page=local_page)}}">编辑</a>
+                                <a href="{{url_for('account.note_delete', note_id=note['note-id'])}}">删除</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div>
+                    {% if local_page > 1 %}
+                        <a href="{{url_for('account.user_space', local_page=0)}}">首页</a>
+                        <a href="{{url_for('account.flip', local_page=local_page)}}">前一页</a>
+                    {% else %}
+                    <a href="{{url_for('account.user_space', local_page=0)}}" style="visibility:hidden">首页</a>
+                    <a href="{{url_for('account.flip', local_page=local_page)}}" style="visibility:hidden">前一页</a>
+                    {% endif %}
+                    <p>现在位置:第{{local_page}}页</p>
+                    <form action="{{url_for('account.jump_to')}}" method="post">
+                        跳转到<input type="number" name="jump-page" required>页
+                        <input type="image" src="{{url_for('static', filename='images/jump-icon.png')}}">
+                    </form>
+                    {% if local_page < total_page %}
+                        <a href="{{url_for('account.flip', local_page=local_page, next_page=True)}}">后一页</a>
+                        <a href="{{url_for('account.user_space', local_page=total_page)}}">尾页</a>
+                    {% else %}
+                    <a href="{{url_for('account.flip', local_page=local_page, next_page=True)}}" style="visibility:hidden">后一页</a>
+                    <a href="{{url_for('account.user_space', local_page=total_page)}}" style="visibility:hidden">尾页</a>
+                    {% endif %}
+                </div>
+            </section>
+            {% endblock %}
+        </main>
+        <script src="{{url_for('static', filename='scripts/animation.js')}}"></script>
+        {% block js_path %}
+            <script src="{{url_for('static', filename='scripts/user-space-animation.js')}}"></script>
+        {% endblock %}
+    </body>
+</html>
