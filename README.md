@@ -1,2 +1,8 @@
-# Attractions-Recommend-website
-浙江旅游景点推荐网站
+# 浙江旅游景点推荐网站
+这个项目是由三人共同完成初版的，包括：
+* @ LoveEmiliaForever
+* @ cc-yg86
+* @ coldpangci
+我们将会在初版的基础上不断改进维护项目
+并逐步完善项目文档
+6.18.2023
